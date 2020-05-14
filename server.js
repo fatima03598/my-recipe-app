@@ -18,3 +18,5 @@ app.listen(port, () => {
       res.status(200).json({message: 'Route is working'})
   })
   
+
+module.exports = app; 

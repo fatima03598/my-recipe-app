@@ -1,5 +1,5 @@
 # my-recipe-app
-## SERVER
+## BACKEND
 ### Set-up
 1. psql shell
 2. CREATE DATABASE recipeapp
@@ -37,3 +37,9 @@ POST recipe --> http://localhost:4001/api/recipelandia/recipes
 PUT/ edit recipe --> http://localhost:4001/api/recipelandia/recipes/:id
 
 DELETE recipe --> http://localhost:4001/api/recipelandia/recipes/:id
+
+### test 
+1.  npm install mocha chai   chai-http --save-dev
+2. create test folder in root directory 
+3. create  routes.spec.js file in test folder
+
