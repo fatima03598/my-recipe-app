@@ -4,11 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 4001
 
-app.use('/api/recipelandia', routes);
+
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 app.listen(port, () => {
     console.log(` Showing on ${port}`);
@@ -18,5 +18,5 @@ app.listen(port, () => {
       res.status(200).json({message: 'Route is working'})
   })
   
-
+  app.use('/api/recipelandia', routes);
 module.exports = app; 

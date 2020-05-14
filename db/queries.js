@@ -9,8 +9,8 @@ getAll = () => {
     return Recipes().select();
 }
  
-getSingle = (recipeID) => {
-    return Recipes().where('id', parseInt(recipeID)).first();
+getSingle = (recipesID) => {
+    return Recipes().where('id', parseInt(recipesID)).first();
 }
 
 add = (recipe) => {

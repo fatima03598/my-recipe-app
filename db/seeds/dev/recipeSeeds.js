@@ -3,7 +3,6 @@ exports.seed = (knex, Promise) => {
   return knex('recipes').del()
     .then(() => {
       return knex('recipes').insert({
-        id: 1,
         title: 'Chocolate Cake',
         ingridients: '3/4 cups butter or margarine, softened; 3 eggs;  2 cups sugar;  2 cups flour; 3/4 cup unsweetened cocoa powder; 1 teaspoon baking soda; 3/4 teaspoon baking powder; 2 teaspoon vanilla; 1 1/2 cup milk',
         difficulty: 'easy',
@@ -14,7 +13,6 @@ exports.seed = (knex, Promise) => {
       });
     }).then(() => {
       return knex('recipes').insert({
-        id: 2,
         title: 'Banana Cake',
         ingridients: '125g butter; 150g caster sugar; 1 teaspoon vanilla extract; 1 egg, beaten; 2 very ripe bananas, mashed; 190g self raising flour;  60ml milk',
         difficulty: 'easy',

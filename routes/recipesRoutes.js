@@ -3,6 +3,7 @@ const router = express.Router();
 const queries = require('../db/queries');
 
 
+
 router.get('/recipes', (req, res, next) => {
     queries.getAll()
     .then((recipe) => {
@@ -21,14 +22,16 @@ router.get('/recipes/:id', (req, res, next) => {
 
 router.post('/recipes', (req, res, next) => {
     queries.add(req.body)
-    .then((recipeID) => {
-        return queries.getSingle(recipeID)
+    .then((recipesID) => {
+      return queries.getSingle(recipesID);
     })
     .then((recipe) => {
         res.json(recipe);
     })
     .catch(err => next(err))
 });
+
+
 
 router.put('/recipes/:id', (req, res, next) => {
     if(req.body.hasOwnProperty('id')) {

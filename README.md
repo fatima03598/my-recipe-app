@@ -42,4 +42,7 @@ DELETE recipe --> http://localhost:4001/api/recipelandia/recipes/:id
 1.  npm install mocha chai   chai-http --save-dev
 2. create test folder in root directory 
 3. create  routes.spec.js file in test folder
+* Couldn't finish in time as had a problem with config in server which was after routing. Took a really long time to figure that out.
+
+4.  npm install --save-dev nyc
 
