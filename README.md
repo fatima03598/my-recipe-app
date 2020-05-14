@@ -24,5 +24,8 @@
 6. populate files
 7. knex seed:run && knex seed:run --env test
 8. touch server.js
+9. create a routes folder and inside create a recipesRoutes file
+10. creates knex.js file in db folder 
+11. create queries.js file in db
 
 
