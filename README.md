@@ -46,3 +46,10 @@ DELETE recipe --> http://localhost:4001/api/recipelandia/recipes/:id
 
 4.  npm install --save-dev nyc
 
+## FRONTEND
+1. create-react-app react-recipe-app
+2. cd react-recipe-app
+3. create components and containers folder in src
+4. npm install react-router-dom
+5. 
+
