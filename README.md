@@ -6,7 +6,7 @@
 3. CREATE DATABASE recipeapptest
 4. npm init
 5. touch .gitignore
-6. npm install --save express
+6. npm install --save express && npm install --save-dev nodemon
 7. add node_modules/ in gitignore
 8. npm install -g knex
 9. npm install knex pg --save
