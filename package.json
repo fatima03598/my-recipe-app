@@ -1,0 +1,25 @@
+{
+  "name": "my-recipe-app",
+  "version": "1.0.0",
+  "description": "1. psql shell\r 2. CREATE DATABASE recipeAPP\r 3. CREATE DATABASE recipeAPPtest\r 4. npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatima03598/my-recipe-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatima03598/my-recipe-app/issues"
+  },
+  "homepage": "https://github.com/fatima03598/my-recipe-app#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "pg": "^8.2.0"
+  }
+}
