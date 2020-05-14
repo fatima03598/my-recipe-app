@@ -2,8 +2,8 @@
 ## SERVER
 ### Set-up
 1. psql shell
-2. CREATE DATABASE recipeAPP
-3. CREATE DATABASE recipeAPPtest
+2. CREATE DATABASE recipeapp
+3. CREATE DATABASE recipeapptest
 4. npm init
 5. touch .gitignore
 6. npm install --save express
@@ -15,6 +15,14 @@
 12. add test  and development url in env file and add the file on .gitignore 
 13. knex init
 14. add config in knex file
-15. knex migrate:make create-recipes-table
+### app
+1. knex migrate:make create-recipes-table
+2. create table
+3. knex migrate:latest && knex migrate:latest --env=test
+4. knex seed:make recipeSeeds
+5. knex seed:make recipeSeedsTest  --env test
+6. populate files
+7. knex seed:run && knex seed:run --env test
+8. touch server.js
 
 

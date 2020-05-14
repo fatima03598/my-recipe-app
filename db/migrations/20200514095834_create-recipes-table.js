@@ -8,7 +8,7 @@ exports.up = (knex, Promise) => {
       table.integer('minutes').notNullable();
       table.integer('serving').notNullable();
       table.string('imageURL').notNullable();
-      table.text('method', longtext).notNullable();
+      table.text('method', 'longtext').notNullable();
   });
 };
 
