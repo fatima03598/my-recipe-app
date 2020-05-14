@@ -1,9 +1,10 @@
 const express = require('express'); 
 const routes =  require('./routes/recipesRoutes'); 
 const app = express();
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 4001
 
-app.use('/api/recipes/', routes);
+app.use('/api/recipelandia', routes);
 
 
 app.use(bodyParser.json());

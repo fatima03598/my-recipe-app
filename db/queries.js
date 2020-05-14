@@ -2,7 +2,7 @@ const knex = require('./knex.js');
 
 
 Recipes = () => {
-    return knex('recipes')
+    return knex('recipes');
 }
 
 getAll = () => {

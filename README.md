@@ -28,4 +28,12 @@
 10. creates knex.js file in db folder 
 11. create queries.js file in db
 
+GET all recipes --> http://localhost:4001/api/recipelandia/recipes
 
+GET single recipe --> http://localhost:4001/api/recipelandia/recipes/:id
+
+POST recipe --> http://localhost:4001/api/recipelandia/recipes
+
+PUT/ edit recipe --> http://localhost:4001/api/recipelandia/recipes/:id
+
+DELETE recipe --> http://localhost:4001/api/recipelandia/recipes/:id
