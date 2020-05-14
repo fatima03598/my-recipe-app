@@ -6,8 +6,8 @@ class Homepage extends Component {
         return (
             <div>
                 <h1>RECIPELANDIA</h1>
-                <button>Add recipe</button>
-                <button>Show recipes</button>
+                <Link to='/Form'><button>Add recipe</button></Link>
+                <Link to='/Recipes'><button>Show recipes</button></Link>
             </div>
         )
     }
