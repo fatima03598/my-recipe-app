@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@300;800&display=swap");
+
+.navBar {
+    display: flex;
+    background-color: #E7D8C9;
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px;
+    font-size: 25px;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
+}
+.navBar a{
+    color:rgb(112, 94, 79);
+    text-decoration: none;
+}
+.navBar a:hover {
+    color:#E6BEAE ;
+}
+.link {
+    font-weight:600;
+}
