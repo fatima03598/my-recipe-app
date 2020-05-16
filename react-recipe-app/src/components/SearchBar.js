@@ -4,8 +4,8 @@ import React, { Component } from 'react'
 //     return  string.split(".").join('. \n')
    
 //  }
-// let notFound = 'unavailable';
-// let Found = 'unavailable'
+let className='found';
+
 class SearchBar extends Component {
     
     constructor(props) {
@@ -31,22 +31,17 @@ class SearchBar extends Component {
                       object.push(item)
                       titles.push(item.title)
                   }
-                  
+                   className='found';
                    this.setState({
                        foundItems: object
                    })  
-              } 
-               
-           })
-       }
-       ) 
-    }
+              }})})}
 
   
   
 
     render() {
-        console.log(this.props.location.state.titles)
+     console.log(this.state.foundItems)
         return (
             <div>
                 <label>
@@ -54,7 +49,7 @@ class SearchBar extends Component {
                     <input type="text" value={this.state.searchTerm} name='searchTerm' onChange={this.handleChange} />
                 </label>
                 <section >
-                   {this.state.foundItems ? this.state.foundItems.map(foundItem => <div key={foundItem.id}  className='this.state'> <h1>{foundItem.title}</h1><h3>{foundItem.ingridients}</h3><img src={foundItem.imageURL}  alt='food'/> <h4>Difficulty: {foundItem.difficulty} <br/> Duration: {foundItem.minutes} minutes <br/> Serving: {foundItem.serving}</h4> <p>{foundItem.method}</p> </div>) : <h2>Loading Items...</h2>}
+                   {this.state.foundItems && this.state.foundItems.length >= 1 ? this.state.foundItems.map(foundItem => <div key={foundItem.id}  className='this.state'> <h1>{foundItem.title}</h1><h3>{foundItem.ingridients}</h3><img src={foundItem.imageURL}  alt='food'/> <h4>Difficulty: {foundItem.difficulty} <br/> Duration: {foundItem.minutes} minutes <br/> Serving: {foundItem.serving}</h4> <p>{foundItem.method}</p> </div>) : this.state.foundItems === undefined ? <h2>Search...</h2> :  <h2>not found</h2>}
                 </section>
             </div>
         )
