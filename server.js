@@ -15,9 +15,11 @@ app.listen(port, () => {
     console.log(` Showing on ${port}`);
   });
 
-  app.get('/', function(req, res) {
-      res.status(200).json({message: 'Route is working'})
-  })
-  
-  app.use('/api/recipelandia', routes);
+app.get('/', function(req, res) {
+    res.status(200).json({message: 'Route is working'})
+})
+
+app.use('/api/recipelandia', routes);
+
+
 module.exports = app; 

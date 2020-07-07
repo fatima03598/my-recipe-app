@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../CSS/SearchBar.css'
 
 const breakafter = (string, punctuation) => {
     return string.split(punctuation).join('. \n ') 
@@ -45,14 +46,13 @@ class SearchBar extends Component {
      const { searchTerm, foundItems } = this.state;
         return (
             <div className='SearchBar'> 
-                <label for='searchTerm'>
-                 Search:
+                <label for='searchTerm' className='searchTerm'>
                     <input type="text" value={searchTerm} name='searchTerm' onChange={this.handleChange} />
                 </label>
                 <section >
                    {foundItems && foundItems.length >= 1 ? foundItems.map(foundItem => <div key={foundItem.id}  className='found-recipe'>
                                                                                             <h1>{foundItem.title}</h1>
-                                                                                            <h3>{breakafter(foundItem.ingridients, ';')}</h3>
+                                                                                            <p className='ingredients'>{breakafter(foundItem.ingridients, ';')}</p>
                                                                                             <img src={foundItem.imageURL}  alt='food'/> 
                                                                                             <h4>Difficulty: {foundItem.difficulty} <br/> 
                                                                                             Duration: {foundItem.minutes} minutes <br/>
@@ -61,7 +61,7 @@ class SearchBar extends Component {
                                                                                        </div>) 
                                                                                        : foundItems === undefined ? 
                                                                                         <h2>Search...</h2> 
-                                                                                       : <h2>not found</h2>}
+                                                                                       : <h2>Sorry, not found. Working on adding more recipes!</h2>}
                 </section>
             </div>
         )

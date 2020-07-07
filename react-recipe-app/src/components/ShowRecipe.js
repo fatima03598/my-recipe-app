@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
+import '../CSS/ShowRecipe.css'
 
 
 const breakafter = (string, punctuation) => {
@@ -49,7 +50,7 @@ const breakafter = (string, punctuation) => {
                 </Link>
                 {recipes ? this.state.recipes.map(recipe => <div key={recipe.id}  className='recipe'> 
                                                                 <h1>{recipe.title}</h1>
-                                                                <h3>{breakafter(recipe.ingridients,';')}</h3>
+                                                                <p className='ingredients'>{breakafter(recipe.ingridients,';')}</p>
                                                                 <img src={recipe.imageURL}  alt='food'/> 
                                                                 <h4>Difficulty: {recipe.difficulty} <br/> 
                                                                 Duration: {recipe.minutes} minutes <br/> 

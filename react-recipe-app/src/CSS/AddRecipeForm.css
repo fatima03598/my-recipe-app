@@ -1,0 +1,56 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@300;800&display=swap");
+
+.RecipeForm {
+    display: flex;
+    background-color:rgb(238, 228, 225);
+    min-height: 100vh;
+    align-content: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+.RecipeForm form {
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.RecipeForm textarea {
+    width: 400px;
+    height: 90px;
+}
+
+.RecipeForm label {
+    display: flex;
+    flex-direction: column;
+    margin: 7px;
+    justify-content: space-evenly;
+}
+label div span {
+    justify-content: flex-start;
+}
+.RecipeForm .required, span {
+    color: red;
+}
+
+.RecipeForm input, textarea {
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.RecipeForm [type=submit] {
+    background-color: #E7D8C9;
+    font-family:'Poppins', sans-serif;
+    font-weight: 500;
+    margin: 10px;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.RecipeForm [type=submit]:hover {
+    background-color:#E6BEAE;
+}

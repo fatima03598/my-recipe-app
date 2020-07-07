@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 
 import '../CSS/Homepage.css';
-
+{/* <img src='uploads/lol' alt='myimage'/> */}
 class Homepage extends Component {
     render() {
         return (

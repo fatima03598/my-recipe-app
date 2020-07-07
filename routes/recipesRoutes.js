@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const queries = require('../db/queries');
+
 
 
 
@@ -31,6 +33,40 @@ router.post('/recipes', (req, res, next) => {
     .catch(err => next(err))
 });
 
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'react-recipe-app/public/uploads');
+    },
+    filename: (req, file, cb) => {
+        console.log(file);
+        // cb(null,  req.body.id+'-'+file.fieldname + '-' +file.originalname);
+        cb(null, 'recipe-image'+file.originalname);
+    }
+});
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+router.post('/upload', upload.single('image'), (req, res, next) => {
+   
+  try {
+      const path = 'uploads/recipe-image'+req.file.originalname
+      req.body.imageURL = path
+      console.log(req.body)
+      return res.status(201).json({
+          message: 'File uploded successfully'
+      });
+     
+  } catch (error) {
+      console.error(error);
+  }
+})
 
 
 router.put('/recipes/:id', (req, res, next) => {
