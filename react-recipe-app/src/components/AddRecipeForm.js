@@ -1,36 +1,54 @@
 import React, { Component } from 'react';
-import {Link, Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import '../CSS/AddRecipeForm.css';
-{/* <input type="submit" value="Submit" /> */}
+
 class AddRecipeForm extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-           title:null,
-           ingridients:null,
-           minutes:null,
-           serving:null,
+           title:undefined,
+           ingridients:undefined,
+           minutes:undefined,
+           serving:undefined,
            imageURL:'',
            image:'',
-           method:null,
+           method:undefined,
            difficulty:'easy',
            redirected:false,
+           url:false
         }};
 
     handleChange = (event) => {
         const name = event.target.name;
          this.setState({
              [name]: event.target.value
+     },() => {
+         console.log(this.state.image)
      })
      }
     
      handleUpload = (event) => {
          this.setState({
             image: event.target.files[0],
-          },() => console.log(this.state.image) )
+          },() => console.log(this.state.imageURL) )
           
 
+     }
+
+     addWithUrl = () => {
+         this.setState({
+             url:true,
+             image:''
+             
+         })
+     }
+
+     addWithUpload = () => {
+         this.setState({
+             url:false,
+             imageURL:''
+         })
      }
 
      postImageUpload = () => {
@@ -59,7 +77,7 @@ class AddRecipeForm extends Component {
      }
     handleSubmit = (event) => { 
         const states = Object.values(this.state);
-         if(states.includes(null)){
+         if(states.includes(undefined)){
             alert('Please fill all the required fields') 
          } else if (!this.state.image && !this.state.imageURL) {
             alert('Please upload a image or use a url')
@@ -95,7 +113,7 @@ class AddRecipeForm extends Component {
                 .catch((error) => {
                 console.error('Error:', error);
                 })
-                
+
                 event.preventDefault()  
         };  
         
@@ -114,7 +132,7 @@ class AddRecipeForm extends Component {
                  Title:
                  <span>*</span>
                  </div>
-                    <input type="text" value={this.state.title} name='title' onChange={this.handleChange} />
+                    <input type="text" value={this.state.title  || ''} name='title' onChange={this.handleChange} />
              
                 </label>
                 <label>
@@ -122,7 +140,7 @@ class AddRecipeForm extends Component {
                  Ingredients:
                  <span>*</span>
                  </div>
-                    <textarea type="text" value={this.state.ingridients} name='ingridients' onChange={this.handleChange} />
+                    <textarea type="text" value={this.state.ingridients  || ''} name='ingridients' onChange={this.handleChange} />
                 </label>
                 <label>
                 <div>
@@ -130,7 +148,7 @@ class AddRecipeForm extends Component {
                  <span>*</span>
                  </div>
                     <span  className='numberCheck'>Please write a number </span> 
-                    <input type="number" value={this.state.minutes} name='minutes' onChange={this.handleChange} />
+                    <input type="number" value={this.state.minutes  || ''} name='minutes' onChange={this.handleChange} />
                
                 </label>
                 <label>
@@ -139,7 +157,7 @@ class AddRecipeForm extends Component {
                  <span>*</span>
                  </div>
                     <span className='numberCheck'>Please write a number </span> 
-                    <input  type="number" value={this.state.serving} name='serving'  onChange={this.handleChange} />
+                    <input  type="number" value={this.state.serving || ''} name='serving'  onChange={this.handleChange} />
                 </label>
                 <label>
                 <div>
@@ -147,7 +165,7 @@ class AddRecipeForm extends Component {
                  <span>*</span>
                  </div>
               
-                    <select value={this.state.difficulty}  name='difficulty' onChange={ this.handleChange}>
+                    <select value={this.state.difficulty || ''}  name='difficulty' onChange={ this.handleChange}>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
                         <option value="Hard">Hard</option>
@@ -158,9 +176,8 @@ class AddRecipeForm extends Component {
                  Image to add of completed result:
                  <span>*</span>
                  </div>
-                    <input type="file" name='file'  onChange={this.handleUpload} />
-                    or add with url
-                    <input type="text" name='imageURL' value={this.state.imageURL} onChange={this.handleChange} />
+                    {!this.state.url ?<div><input type="file" name='file'  onChange={this.handleUpload} /> <button type='button' name='button' onClick={this.addWithUrl}>Add with image URL</button></div>
+                    : <div> <input type="text" name='imageURL' value={this.state.imageURL} onChange={this.handleChange} /> <button type='button' onClick={this.addWithUpload} >Upload image</button> </div>}
                  
                 </label>
                 <label>

@@ -28,7 +28,7 @@ router.post('/recipes', (req, res, next) => {
       return queries.getSingle(recipesID);
     })
     .then((recipe) => {
-        res.json(recipe);
+        res.status(200).json(recipe);
     })
     .catch(err => next(err))
 });
@@ -58,12 +58,15 @@ router.post('/upload', upload.single('image'), (req, res, next) => {
   try {
       const path = 'uploads/recipe-image'+req.file.originalname
       req.body.imageURL = path
-      console.log(req.body)
-      return res.status(201).json({
-          message: 'File uploded successfully'
-      });
-     
+      queries.add(req.body)
+      .then((recipesID) => {
+        return queries.getSingle(recipesID);
+      })
+      .then((recipe) => {
+          res.status(200).json(recipe);
+      })
   } catch (error) {
+    err => next(err)
       console.error(error);
   }
 })
