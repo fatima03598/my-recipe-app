@@ -49,13 +49,15 @@ const breakafter = (string, punctuation) => {
                               <button   className='ShowRecipeSearch-button'>Search</button>
                 </Link>
                 {recipes ? this.state.recipes.map(recipe => <div key={recipe.id}  className='recipe'> 
-                                                                <h1>{recipe.title}</h1>
-                                                                <p className='ingredients'>{breakafter(recipe.ingridients,';')}</p>
+                                                               <Link to={{
+                          pathname:"/fullRecipe", 
+                          state: {  recipe: recipe }
+                          }}
+                                                               > <h1>{recipe.title}</h1></Link>
                                                                 <img src={recipe.imageURL}  alt='food'/> 
                                                                 <h4>Difficulty: {recipe.difficulty} <br/> 
                                                                 Duration: {recipe.minutes} minutes <br/> 
                                                                 Serving: {recipe.serving}</h4>
-                                                                <p>{breakafter(recipe.method, '.')}</p> 
                                                              </div>) 
                                                              : <h2>Loading recipes...</h2>}
             </div>
