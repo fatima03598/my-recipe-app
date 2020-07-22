@@ -37,7 +37,7 @@ label div span {
 
 .RecipeForm input, textarea {
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.822);
 }
 
 .RecipeForm [type=submit] {
@@ -48,9 +48,17 @@ label div span {
     padding: 8px;
     font-size: 20px;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.849);
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 .RecipeForm [type=submit]:hover {
     background-color:#E6BEAE;
+    cursor: pointer;
+}
+
+.alert {
+    background-color: rgba(231, 37, 37, 0.733);
+    padding: 10px;
+    /* border: 2px solid red; */
+    border-radius: 5px;
 }

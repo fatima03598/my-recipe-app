@@ -4,11 +4,15 @@ const breakafter = (string, punctuation) => {
     return string.split(punctuation).join('. \n ') 
    
    }
+
 class fullRecipe extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
     render() {
         return (
             <div className='ShowRecipe'>
-                 {this.props.location.state.recipe ? <div key={this.props.location.state.recipe.id} className='recipe'> 
+                 {this.props.location.state.recipe ? <div key={this.props.location.state.recipe.id} className='recipeFull'> 
                                                                <h1>{this.props.location.state.recipe.title}</h1>
                                                                 <p className='ingredients'>{breakafter(this.props.location.state.recipe.ingridients,';')}</p>
                                                                 <img src={this.props.location.state.recipe.imageURL}  alt='food'/> 
