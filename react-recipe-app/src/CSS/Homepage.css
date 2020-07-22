@@ -37,6 +37,7 @@
 }
 .Home-button:hover {
     background-color:#E6BEAE;
+    cursor: pointer;
 }
 .footer {
     display: flex;

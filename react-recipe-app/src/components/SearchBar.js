@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 import '../CSS/SearchBar.css'
 
 const breakafter = (string, punctuation) => {
@@ -51,13 +52,15 @@ class SearchBar extends Component {
                 </label>
                 <section >
                    {foundItems && foundItems.length >= 1 ? foundItems.map(foundItem => <div key={foundItem.id}  className='found-recipe'>
-                                                                                            <h1>{foundItem.title}</h1>
-                                                                                            <p className='ingredients'>{breakafter(foundItem.ingridients, ';')}</p>
+                                                                                            <Link to={{
+                                                                                                    pathname:"/fullRecipe", 
+                                                                                                    state: {  recipe: foundItem }
+                                                                                                    }}> <h1>{foundItem.title}</h1></Link>
+                                                                                          
                                                                                             <img src={foundItem.imageURL}  alt='food'/> 
                                                                                             <h4>Difficulty: {foundItem.difficulty} <br/> 
                                                                                             Duration: {foundItem.minutes} minutes <br/>
                                                                                             Serving: {foundItem.serving}</h4> 
-                                                                                            <p>{breakafter(foundItem.method, '.')}</p>
                                                                                        </div>) 
                                                                                        : foundItems === undefined ? 
                                                                                         <h2>Search...</h2> 

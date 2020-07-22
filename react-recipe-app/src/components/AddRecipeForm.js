@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import { Alert } from 'reactstrap';
 import '../CSS/AddRecipeForm.css';
 
 class AddRecipeForm extends Component {
@@ -16,13 +17,16 @@ class AddRecipeForm extends Component {
            method:undefined,
            difficulty:'easy',
            redirected:false,
-           url:false
+           url:false,
+           visible:false,
+           imageVisible:false
         }};
 
     handleChange = (event) => {
         const name = event.target.name;
          this.setState({
-             [name]: event.target.value
+             [name]: event.target.value,
+             visible:false
      },() => {
          console.log(this.state.image)
      })
@@ -75,12 +79,27 @@ class AddRecipeForm extends Component {
         console.error('Error:', error);
         });
      }
+
+
     handleSubmit = (event) => { 
         const states = Object.values(this.state);
          if(states.includes(undefined)){
-            alert('Please fill all the required fields') 
+            event.preventDefault()
+             console.log('luca')
+             this.setState({
+                 visible:true}   
+              );
+           
          } else if (!this.state.image && !this.state.imageURL) {
-            alert('Please upload a image or use a url')
+            event.preventDefault()
+             this.setState({
+                 imageVisible:true
+             }, () => {
+                 window.setTimeout(() => {
+                     this.setState({imageVisible:false})
+                 }, 4000)
+             })
+            // alert('Please upload a image or use a url')
          } else if( this.state.image) {
             this.postImageUpload()
             event.preventDefault()
@@ -120,74 +139,85 @@ class AddRecipeForm extends Component {
      }
 
     render() {
+       
         if (this.state.redirected === true) {
           return( <Redirect to='/Recipe-added' />)
         } 
         return (
             <div className='RecipeForm'>
+        
                 <p className='required'> * for required fields</p>
                 <form >
-                <label>
-                <div>
-                 Title:
-                 <span>*</span>
-                 </div>
-                    <input type="text" value={this.state.title  || ''} name='title' onChange={this.handleChange} />
-             
-                </label>
-                <label>
-                <div>
-                 Ingredients:
-                 <span>*</span>
-                 </div>
-                    <textarea type="text" value={this.state.ingridients  || ''} name='ingridients' onChange={this.handleChange} />
-                </label>
-                <label>
-                <div>
-                 How many minutes will it take? :
-                 <span>*</span>
-                 </div>
-                    <span  className='numberCheck'>Please write a number </span> 
-                    <input type="number" value={this.state.minutes  || ''} name='minutes' onChange={this.handleChange} />
-               
-                </label>
-                <label>
-                <div> 
-                 How many people will it serve? :
-                 <span>*</span>
-                 </div>
-                    <span className='numberCheck'>Please write a number </span> 
-                    <input  type="number" value={this.state.serving || ''} name='serving'  onChange={this.handleChange} />
-                </label>
-                <label>
-                <div>
-                 What's the difficulty? :
-                 <span>*</span>
-                 </div>
               
-                    <select value={this.state.difficulty || ''}  name='difficulty' onChange={ this.handleChange}>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
-                    </select>
-                </label>
-                <label>
-                <div>
-                 Image to add of completed result:
-                 <span>*</span>
-                 </div>
-                    {!this.state.url ?<div><input type="file" name='file'  onChange={this.handleUpload} /> <button type='button' name='button' onClick={this.addWithUrl}>Add with image URL</button></div>
-                    : <div> <input type="text" name='imageURL' value={this.state.imageURL} onChange={this.handleChange} /> <button type='button' onClick={this.addWithUpload} >Upload image</button> </div>}
-                 
-                </label>
-                <label>
-                <div>
-                 Method:
-                 <span>*</span>
-                 </div>
-                    <textarea type="text"  name='method' value={this.state.method} onChange={this.handleChange} />
-                </label>
-                <input type="submit"  value='Submit' onClick={this.handleSubmit}/>
+                <Alert color="danger" className='alert' isOpen={this.state.visible}> 
+                     Please fill all required fields
+                </Alert> 
+            
+                    <label>
+                        <div>
+                            Title:
+                            <span>*</span>
+                        </div>
+                            <input type="text" value={this.state.title  || ''} name='title' onChange={this.handleChange} />
+                    
+                    </label>
+                    <label>
+                        <div>
+                            Ingredients:
+                            <span>*</span>
+                        </div>
+                        <textarea type="text" value={this.state.ingridients  || ''} name='ingridients' onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        <div>
+                            How many minutes will it take? :
+                            <span>*</span>
+                        </div>
+                        <span  className='numberCheck'>Please write a number </span> 
+                        <input type="number" value={this.state.minutes  || ''} name='minutes' onChange={this.handleChange} />
+                
+                    </label>
+                    <label>
+                        <div> 
+                            How many people will it serve? :
+                            <span>*</span>
+                        </div>
+                            <span className='numberCheck'>Please write a number </span> 
+                            <input  type="number" value={this.state.serving || ''} name='serving'  onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        <div>
+                            What's the difficulty? :
+                            <span>*</span>
+                        </div>
+                    
+                        <select value={this.state.difficulty || ''}  name='difficulty' onChange={ this.handleChange}>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </label>
+                    <label>
+                        <div>
+                        <Alert color="danger" className='alert'  isOpen={this.state.imageVisible}> 
+                                Please upload an image or use an image url
+                        </Alert> 
+                    
+                            Image to add of completed result:
+                            <span>*</span>
+                        </div>
+                        {!this.state.url ?<div><input type="file" name='file'  onChange={this.handleUpload} /> <button type='button' name='button' onClick={this.addWithUrl}>Add with image URL</button></div>
+                        : <div> <input type="text" name='imageURL' value={this.state.imageURL} onChange={this.handleChange} /> <button type='button' onClick={this.addWithUpload} >Upload image</button> </div>}
+                    
+                    </label>
+                    <label>
+                        <div>
+                            Method:
+                            <span>*</span>
+                        </div>
+                        <textarea type="text"  name='method' value={this.state.method} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit"  value='Submit' onClick={(event)=>{this.handleSubmit(event)}}/>
                 </form>
             </div>
         )
