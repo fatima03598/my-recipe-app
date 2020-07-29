@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import '../CSS/SearchBar.css'
 
-const breakafter = (string, punctuation) => {
-    return string.split(punctuation).join('. \n ') 
-   }
-   
+
 
 class SearchBar extends Component {
     
@@ -18,7 +15,6 @@ class SearchBar extends Component {
         }};
 
     handleChange = (event) => {
-        console.log(this.state.foundItems)
         let object = [];
         let titles=[]
        this.setState({

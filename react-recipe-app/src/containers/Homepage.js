@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 
 import '../CSS/Homepage.css';
-{/* <img src='uploads/lol' alt='myimage'/> */}
+
 class Homepage extends Component {
     render() {
         return (
             <div className='Homepage'>
                 <section className='main'>
                 <article className='title'>
-                <h1>RecipeLandia</h1><img src={require('./fashion.png')}   alt='chef-cap'/>
+                <h1>RecipeLandia</h1><img src='/fashion.png'  alt='chef-cap'/>
                 </article>
                 <div className='Home-buttons'>
                     <Link to='/Form'><button className='Home-button' >Add recipe</button></Link>
