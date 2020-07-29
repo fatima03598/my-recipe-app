@@ -1,55 +1,60 @@
-# my-recipe-app
-## BACKEND
-### Set-up
-1. psql shell
-2. CREATE DATABASE recipeapp
-3. CREATE DATABASE recipeapptest
-4. npm init
-5. touch .gitignore
-6. npm install --save express && npm install --save-dev nodemon
-7. add node_modules/ in gitignore
-8. npm install -g knex
-9. npm install knex pg --save
-10. npm install dotenv --save
-11. touch .env
-12. add test  and development url in env file and add the file on .gitignore 
-13. knex init
-14. add config in knex file
-### app
-1. knex migrate:make create-recipes-table
-2. create table
-3. knex migrate:latest && knex migrate:latest --env=test
-4. knex seed:make recipeSeeds
-5. knex seed:make recipeSeedsTest  --env test
-6. populate files
-7. knex seed:run && knex seed:run --env test
-8. touch server.js
-9. create a routes folder and inside create a recipesRoutes file
-10. creates knex.js file in db folder 
-11. create queries.js file in db
+# My recipe app
 
-GET all recipes --> http://localhost:4001/api/recipelandia/recipes
+## Description
+Simple Recipe App website where a user can add a recipe by filling out a form and also browse through all recipes that were previously added
 
-GET single recipe --> http://localhost:4001/api/recipelandia/recipes/:id
+![Recipe app](./Recipe.gif)
 
-POST recipe --> http://localhost:4001/api/recipelandia/recipes
+## Requirements
 
-PUT/ edit recipe --> http://localhost:4001/api/recipelandia/recipes/:id
+* Postgres account
 
-DELETE recipe --> http://localhost:4001/api/recipelandia/recipes/:id
 
-### test 
-1.  npm install mocha chai   chai-http --save-dev
-2. create test folder in root directory 
-3. create  routes.spec.js file in test folder
-* Couldn't finish in time as had a problem with config in server which was after routing. Took a really long time to figure that out.
+## Getting Started
+### Backend 
+1. open psql shell
 
-4.  npm install --save-dev nyc
+CREATE DATABASE recipeapp 
 
-## FRONTEND
-1. create-react-app react-recipe-app
-2. cd react-recipe-app
-3. create components and containers folder in src
-4. npm install react-router-dom
-5. 
+CREATE DATABASE recipeapptest
+
+2. Create .env file in my-recipe.app folder 
+```
+DEVELOPMENT_URL=postgres://[your username]:[your password]@[port]/recipeapp
+TEST_URL=postgres://[your username]:[your password]@[port]/recipeapptest
+```
+
+3. On the terminal open my-recipe-app folder
+```
+npm install
+```
+4. 
+```
+npm start
+```
+### Frontend 
+1. In another window open the react-recipe-app folder, and on the terminal: 
+```
+npm install
+```
+2. 
+```
+npm start
+```
+## User Stories 
+* As a user, I can add my recipe with a title, serving, time taken, description and image I uploaded.
+* As a user, I can add my recipe with a title, serving, time taken, description and image with an url.
+* As a user I can browse through all the recipes.
+* As a user I can search for a particular recipe. 
+
+## Main Technologies
+* React js
+* Node.js
+* Express.js
+* Knex.js with pg 
+* Mocha & Chai
+
+
+
+
 

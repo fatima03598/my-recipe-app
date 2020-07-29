@@ -26,18 +26,14 @@ class AddRecipeForm extends Component {
         const name = event.target.name;
          this.setState({
              [name]: event.target.value,
-             visible:false
-     },() => {
-         console.log(this.state.image)
-     })
+             visible:false})
      }
     
      handleUpload = (event) => {
+        
          this.setState({
             image: event.target.files[0],
-          },() => console.log(this.state.imageURL) )
-          
-
+          })
      }
 
      addWithUrl = () => {
@@ -69,12 +65,7 @@ class AddRecipeForm extends Component {
         method: 'POST',
         body: formData
         })
-        .then(response => response.json())
-        .then(result => {
-            this.setState({
-                redirected:true
-            })
-        })
+        .then(response => this.setState({ redirected: true}))
         .catch(error => {
         console.error('Error:', error);
         });
@@ -85,7 +76,6 @@ class AddRecipeForm extends Component {
         const states = Object.values(this.state);
          if(states.includes(undefined)){
             event.preventDefault()
-             console.log('luca')
              this.setState({
                  visible:true}   
               );
@@ -101,10 +91,12 @@ class AddRecipeForm extends Component {
              })
             // alert('Please upload a image or use a url')
          } else if( this.state.image) {
-            this.postImageUpload()
             event.preventDefault()
+            this.postImageUpload()
+           
          }
          else {
+            event.preventDefault()  
              const data = {
                  title: this.state.title,
                  ingridients: this.state.ingridients,
@@ -133,7 +125,7 @@ class AddRecipeForm extends Component {
                 console.error('Error:', error);
                 })
 
-                event.preventDefault()  
+                
         };  
         
      }

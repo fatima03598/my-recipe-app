@@ -3,11 +3,6 @@ import {Link} from "react-router-dom";
 import '../CSS/ShowRecipe.css'
 
 
-const breakafter = (string, punctuation) => {
- return string.split(punctuation).join('. \n ') 
-
-}
-
 
  class ShowRecipe extends Component {
 
