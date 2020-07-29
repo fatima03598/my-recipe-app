@@ -18,7 +18,7 @@ CREATE DATABASE recipeapp
 
 CREATE DATABASE recipeapptest
 
-2. Create .env file in my-recipe.app folder 
+2. Create .env file in my-recipe.app folder and add
 ```
 DEVELOPMENT_URL=postgres://[your username]:[your password]@[port]/recipeapp
 TEST_URL=postgres://[your username]:[your password]@[port]/recipeapptest
