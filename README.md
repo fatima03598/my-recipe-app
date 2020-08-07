@@ -24,7 +24,7 @@ DEVELOPMENT_URL=postgres://[your username]:[your password]@[port]/recipeapp
 TEST_URL=postgres://[your username]:[your password]@[port]/recipeapptest
 ```
 
-3. On the terminal open my-recipe-app folder
+3. On the terminal open the root folder
 ```
 npm install
 ```
@@ -33,7 +33,7 @@ npm install
 npm start
 ```
 ### Frontend 
-1. In another window open the react-recipe-app folder, and on the terminal: 
+1. In another terminal open the react-recipe-app folder, run..: 
 ```
 npm install
 ```
