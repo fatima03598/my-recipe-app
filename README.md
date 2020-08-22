@@ -5,6 +5,14 @@ Simple Recipe App website where a user can add a recipe by filling out a form an
 
 ![Recipe app](./Recipe.gif)
 
+
+## Main Technologies
+* React js
+* Node.js
+* Express.js
+* Knex.js with pg 
+* Mocha & Chai
+
 ## Requirements
 
 * Postgres account
@@ -47,12 +55,6 @@ npm start
 * As a user I can browse through all the recipes.
 * As a user I can search for a particular recipe. 
 
-## Main Technologies
-* React js
-* Node.js
-* Express.js
-* Knex.js with pg 
-* Mocha & Chai
 
 
 
