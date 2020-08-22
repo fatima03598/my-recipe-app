@@ -6,7 +6,8 @@ Simple Recipe App website where a user can add a recipe by filling out a form an
 ![Recipe app](./Recipe.gif)
 
 
-## Main Technologies
+## Main Technologies & Languages
+* JavaScript
 * React js
 * Node.js
 * Express.js
